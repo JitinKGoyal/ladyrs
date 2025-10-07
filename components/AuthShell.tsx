@@ -45,7 +45,7 @@ export default function AuthShell({
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center" style={{ background: "linear-gradient(95deg, #360008 , #3c0024)" }}>
-            <div className="w-full max-w-5xl bg-white/95 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-5 md:h-[560px]">
+            <div className="w-full max-w-4xl bg-white/95 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-5 md:h-[560px]">
                 {/* Decorative left panel with sliding capsule */}
                 <div
                     className="relative hidden md:block md:col-span-2"
@@ -69,22 +69,22 @@ export default function AuthShell({
                         {/* White capsule background that slides */}
                         <motion.div
                             initial={false}
-                            animate={{ top: active === "login" ? -12 : 75 }}
+                            animate={{ top: active === "login" ? -16 : 73 }}
                             transition={{ type: "spring", stiffness: 320, damping: 20 }}
-                            className="absolute right-[-111px] h-24"
+                            className="absolute right-[-88px] h-24"
                             style={{ width: 300, top: 0 }}
                         >
                             <Image
-                                src="/images/capsule.svg"
+                                src="/images/capsule1.svg"
                                 alt="capsule"
                                 fill
                                 className="object-contain pointer-events-none"
-                                style={{ transform: "scale(1.8)" }}
+                                style={{ transform: "scaleX(2.3) scaleY(2.7)" }}
                             />
                         </motion.div>
 
                         {/* Text labels stacked vertically */}
-                        <div className="absolute right-[-15px] w-30 top-0 flex flex-col gap-6">
+                        <div className="absolute right-[-10px] w-30 top-0 flex flex-col gap-6">
                             <button
                                 className={`h-16 flex items-center justify-center font-bold tracking-wider transition-colors ${active === "login" ? "text-rose-700" : "text-white"
                                     }`}
@@ -105,6 +105,14 @@ export default function AuthShell({
 
                 {/* Right panel with form container */}
                 <div className="relative p-8 sm:p-12 bg-white h-full overflow-y-auto md:col-span-3">
+                    {/* Inner top-right role switch */}
+                    <div className="absolute top-4 right-4">
+                        <div className="flex rounded-full overflow-hidden shadow border border-black/10 bg-white">
+                            <button className="px-4 py-2 text-sm text-white" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>Vendor</button>
+                            <div className="w-px bg-black/10" />
+                            <button className="px-4 py-2 text-sm text-[#55142A]">Customer</button>
+                        </div>
+                    </div>
                     <div className="flex flex-col items-center gap-4 mb-8">
                         <div className="w-16 h-16 rounded-full grid place-items-center shadow-md" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>
                             <FiUser className="w-9 h-9 text-white" />
