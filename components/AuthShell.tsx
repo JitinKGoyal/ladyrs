@@ -104,35 +104,41 @@ export default function AuthShell({
                 </div>
 
                 {/* Right panel with form container */}
-                <div className="relative p-8 sm:p-12 bg-white h-full overflow-y-auto md:col-span-3">
+                <div className="relative p-4 sm:p-6 bg-white h-full overflow-y-auto md:col-span-3">
                     {/* Inner top-right role switch */}
-                    <div className="absolute top-4 right-4">
-                        <div className="flex rounded-full overflow-hidden shadow border border-black/10 bg-white">
-                            <button className="px-4 py-2 text-sm text-white" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>Vendor</button>
-                            <div className="w-px bg-black/10" />
-                            <button className="px-4 py-2 text-sm text-[#55142A]">Customer</button>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center gap-4 mb-8">
-                        <div className="w-16 h-16 rounded-full grid place-items-center shadow-md" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>
-                            <FiUser className="w-9 h-9 text-white" />
-                        </div>
-                        <h1 className="text-3xl font-bold tracking-wide text-rose-700">
-                            {isLogin ? headings.login.title : headings.signup.title}
-                        </h1>
-                    </div>
+                    <div className="flex justify-end">
 
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={mode}
-                            initial={{ opacity: 0, x: 40 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -16 }}
-                            transition={{ duration: 0.35, ease: "easeOut" }}
-                        >
-                            {children}
-                        </motion.div>
-                    </AnimatePresence>
+                        <div className="top-4 right-4">
+                            <div className="flex rounded-full overflow-hidden shadow border border-black/10 bg-white">
+                                <button className="px-4 py-2 text-sm text-white" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>Customer</button>
+                                <div className="w-px bg-black/10" />
+                                <button className="px-4 py-2 text-sm text-[#55142A]">Vendor</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-4">
+
+                        <div className="flex flex-col items-center gap-4 mb-8">
+                            <div className="w-16 h-16 rounded-full grid place-items-center shadow-md" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>
+                                <FiUser className="w-9 h-9 text-white" />
+                            </div>
+                            <h1 className="text-3xl font-bold tracking-wide text-rose-700">
+                                {isLogin ? headings.login.title : headings.signup.title}
+                            </h1>
+                        </div>
+
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={mode}
+                                initial={{ opacity: 0, x: 40 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -16 }}
+                                transition={{ duration: 0.35, ease: "easeOut" }}
+                            >
+                                {children}
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </div>
