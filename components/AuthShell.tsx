@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { FiUser } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
@@ -39,31 +40,27 @@ export default function AuthShell({
         // Navigate after a short delay to allow animation to play
         setTimeout(() => {
             router.push(target === "login" ? "/login" : "/signup");
-        }, 260);
+        }, 300);
     };
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-[#4a0834]">
+        <div className="min-h-screen w-full flex items-center justify-center" style={{ background: "linear-gradient(95deg, #360008 , #3c0024)" }}>
             <div className="w-full max-w-5xl bg-white/95 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-5 md:h-[560px]">
                 {/* Decorative left panel with sliding capsule */}
                 <div
                     className="relative hidden md:block md:col-span-2"
                     style={{
                         backgroundImage:
-                            "linear-gradient(135deg, rgba(225,29,72,0.75), rgba(217,70,239,0.65)), url('/images/auth-bg.jpg')",
+                            "linear-gradient(95deg, #c4569e -13%, #55142A 47%)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                     }}
                 >
                     {/* angled layers */}
-                    <div className="absolute inset-0 opacity-40">
-                        <div className="absolute -left-40 top-0 bottom-0 w-[70%] rotate-45 bg-white/10" />
-                        <div className="absolute -left-56 top-0 bottom-0 w-[70%] rotate-45 bg-white/20" />
-                        <div className="absolute -left-72 top-0 bottom-0 w-[70%] rotate-45 bg-black/10" />
-                    </div>
+
 
                     {/* Vertical logo filling the section, rotated 90deg */}
-                    <div className="absolute inset-y-0 -left-15 h-full w-[340px] -rotate-90 origin-center opacity-90">
+                    <div className="absolute inset-y-0 -left-20 h-full w-[340px] -rotate-90 origin-center opacity-90">
                         <Image src="/images/logo.png" alt="logo" fill className="object-contain" />
                     </div>
 
@@ -108,19 +105,9 @@ export default function AuthShell({
 
                 {/* Right panel with form container */}
                 <div className="relative p-8 sm:p-12 bg-white h-full overflow-y-auto md:col-span-3">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-rose-600 to-fuchsia-600 grid place-items-center shadow-md">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="white"
-                                strokeWidth="1.6"
-                                className="w-9 h-9"
-                            >
-                                <path d="M20 21a8 8 0 10-16 0" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
+                    <div className="flex flex-col items-center gap-4 mb-8">
+                        <div className="w-16 h-16 rounded-full grid place-items-center shadow-md" style={{ background: "linear-gradient(95deg, #55142A -13%, #c4569e 47%)" }}>
+                            <FiUser className="w-9 h-9 text-white" />
                         </div>
                         <h1 className="text-3xl font-bold tracking-wide text-rose-700">
                             {isLogin ? headings.login.title : headings.signup.title}
@@ -130,7 +117,7 @@ export default function AuthShell({
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={mode}
-                            initial={{ opacity: 0, x: 16 }}
+                            initial={{ opacity: 0, x: 40 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -16 }}
                             transition={{ duration: 0.35, ease: "easeOut" }}
